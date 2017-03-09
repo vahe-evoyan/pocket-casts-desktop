@@ -1,0 +1,22 @@
+{
+  "name": "pocketcasts-desktop",
+  "version": "0.1.0",
+  "description": "PocketCasts desktop version (unofficial)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vahe-evoyan/pocketcasts-desktop.git"
+  },
+  "keywords": [
+    "pocketcasts"
+  ],
+  "author": "Vahe Evoyan <vahe.evoyan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vahe-evoyan/pocketcasts-desktop/issues"
+  },
+  "homepage": "https://github.com/vahe-evoyan/pocketcasts-desktop#readme"
+}
