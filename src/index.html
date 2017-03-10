@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PocketCasts Desktop</title>
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+  <body>
+    <webview id="wv" src="http://play.pocketcasts.com" allowpopups></webview>
+
+    <!-- build:remove -->
+    <!-- Connect to server process -->
+    <script>require('electron-connect').client.create()</script>
+    <!-- end:build -->
+  </body>
+</html>

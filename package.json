@@ -2,9 +2,10 @@
   "name": "pocketcasts-desktop",
   "version": "0.1.0",
   "description": "PocketCasts desktop version (unofficial)",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp start"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/vahe-evoyan/pocketcasts-desktop/issues"
   },
-  "homepage": "https://github.com/vahe-evoyan/pocketcasts-desktop#readme"
+  "homepage": "https://github.com/vahe-evoyan/pocketcasts-desktop#readme",
+  "dependencies": {
+    "electron": "^1.6.2"
+  },
+  "devDependencies": {
+    "electron-connect": "^0.6.1",
+    "gulp": "^3.9.1"
+  }
 }
