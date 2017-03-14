@@ -3,6 +3,8 @@ const EventEmitter = require('events');
 const path = require('path');
 const url = require('url');
 
+const IPC_NAMESPACE = 'PocketCasts';
+
 class WindowManager extends EventEmitter {
   createWindow() {
     this.window = new BrowserWindow({width: 800, height: 600});
@@ -20,6 +22,10 @@ class WindowManager extends EventEmitter {
   onClosed() {
     this.window = null;
     this.emit('closed');
+  }
+
+  send(action, data = {}) {
+    this.window.webContents.send(IPC_NAMESPACE + '::' + action, data);
   }
 
   closed() {
