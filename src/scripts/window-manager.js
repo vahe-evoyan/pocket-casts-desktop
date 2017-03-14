@@ -7,7 +7,12 @@ const IPC_NAMESPACE = 'PocketCasts';
 
 class WindowManager extends EventEmitter {
   createWindow() {
-    this.window = new BrowserWindow({width: 800, height: 600});
+    this.window = new BrowserWindow({
+      width: 980,
+      height: 660,
+      minWidth: 980,
+      minHeight: 660
+    });
   }
 
   initWindow() {

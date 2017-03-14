@@ -13,9 +13,15 @@ class Player {
     return episodeRow.querySelector('.episode_button');
   }
 
-  playPause() {
-    if (this.selected) {
+  getMediaPlayer() {
+    let ctrl = angular.element('[ng-controller="PlayerController"]');
+    return ctrl.scope().mediaPlayer;
+  }
 
+  playPause() {
+    let mediaPlayer = this.getMediaPlayer();
+    if (mediaPlayer.episode !== null) {
+      mediaPlayer.playPause();
     } else {
       let playButton = this.getMostRecentPlayButton();
       let scope = angular.element(playButton).scope();
