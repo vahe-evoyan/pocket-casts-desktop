@@ -1,8 +1,9 @@
-const {ipcRenderer} = require('electron')
+const {ipcRenderer} = require('electron');
 
 class Player {
   constructor() {
     this.selected = null;
+    this.windowFocused = false;
     ipcRenderer.on('PocketCasts::playPause', () => {
       this.playPause();
     });
@@ -11,6 +12,12 @@ class Player {
     });
     ipcRenderer.on('PocketCasts::next', () => {
       this.skipForward();
+    });
+    ipcRenderer.on('PocketCasts::focus', () => {
+      this.windowFocused = true;
+    });
+    ipcRenderer.on('PocketCasts::blur', () => {
+      this.windowFocused = false;
     });
   }
 
@@ -24,6 +31,17 @@ class Player {
     return ctrl.scope().mediaPlayer;
   }
 
+  popNotification() {
+    if (!this.windowFocused) {
+      const mediaPlayer = this.getMediaPlayer();
+      new Notification('PocketCasts', {
+        body: mediaPlayer.episode.title,
+        title: 'PocketCasts',
+        silent: true
+      });
+    }
+  }
+
   playPause() {
     const mediaPlayer = this.getMediaPlayer();
     if (mediaPlayer.episode !== null) {
@@ -33,6 +51,7 @@ class Player {
       let scope = angular.element(playButton).scope();
       scope.playPause(scope.episode, scope.episode.podcast);
     }
+    this.popNotification();
   }
 
   skipBack() {

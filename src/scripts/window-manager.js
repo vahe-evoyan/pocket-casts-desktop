@@ -17,6 +17,8 @@ class WindowManager extends EventEmitter {
 
   initWindow() {
     this.window.on('closed', this.onClosed.bind(this));
+    this.window.on('focus', this.onFocus.bind(this));
+    this.window.on('blur', this.onBlur.bind(this));
     this.window.loadURL(url.format({
       pathname: path.join(app.getAppPath(), 'src', 'index.html'),
       protocol: 'file:',
@@ -27,6 +29,14 @@ class WindowManager extends EventEmitter {
   onClosed() {
     this.window = null;
     this.emit('closed');
+  }
+
+  onFocus() {
+    this.send('focus');
+  }
+
+  onBlur() {
+    this.send('blur');
   }
 
   send(action, data = {}) {

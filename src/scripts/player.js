@@ -14,6 +14,12 @@ class Player extends EventEmitter {
     ipcRenderer.on('PocketCasts::previous', () => {
       this.skipBack();
     });
+    ipcRenderer.on('PocketCasts::focus', () => {
+      this.webview.send('PocketCasts::focus');
+    });
+    ipcRenderer.on('PocketCasts::blur', () => {
+      this.webview.send('PocketCasts::blur');
+    });
   }
 
   playPause() {
