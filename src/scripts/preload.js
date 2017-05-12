@@ -6,6 +6,12 @@ class Player {
     ipcRenderer.on('PocketCasts::playPause', () => {
       this.playPause();
     });
+    ipcRenderer.on('PocketCasts::previous', () => {
+      this.skipBack();
+    });
+    ipcRenderer.on('PocketCasts::next', () => {
+      this.skipForward();
+    });
   }
 
   getMostRecentPlayButton() {
@@ -19,13 +25,27 @@ class Player {
   }
 
   playPause() {
-    let mediaPlayer = this.getMediaPlayer();
+    const mediaPlayer = this.getMediaPlayer();
     if (mediaPlayer.episode !== null) {
       mediaPlayer.playPause();
     } else {
       let playButton = this.getMostRecentPlayButton();
       let scope = angular.element(playButton).scope();
       scope.playPause(scope.episode, scope.episode.podcast);
+    }
+  }
+
+  skipBack() {
+    const mediaPlayer = this.getMediaPlayer();
+    if (mediaPlayer.episode !== null) {
+      mediaPlayer.jumpBack();
+    }
+  }
+
+  skipForward() {
+    const mediaPlayer = this.getMediaPlayer();
+    if (mediaPlayer.episode !== null) {
+      mediaPlayer.jumpForward();
     }
   }
 }
