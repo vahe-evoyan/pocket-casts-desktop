@@ -1,12 +1,6 @@
 const {app, globalShortcut} = require('electron');
+const {MEDIA_KEYS} = require('./constants');
 const EventEmitter = require('events');
-
-const MEDIA_KEYS = {
-  MediaNextTrack: 'next',
-  MediaPreviousTrack: 'previous',
-  MediaStop: 'stop',
-  MediaPlayPause: 'playPause'
-};
 
 class ShortcutManager extends EventEmitter {
   registerMediaKeys() {

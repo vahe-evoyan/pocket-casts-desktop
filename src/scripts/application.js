@@ -2,8 +2,7 @@ const EventEmitter = require('events');
 const WindowManager = require('./window-manager');
 const ShortcutManager = require('./shortcut-manager');
 const Player = require('./player');
-
-
+const TrayManager = require('./tray');
 
 class Application {
   constructor(app) {
@@ -13,6 +12,7 @@ class Application {
   init() {
     this.window = new WindowManager();
     this.shortcuts = new ShortcutManager();
+    this.tray = new TrayManager();
 
     this.app.on('ready', this.onReady.bind(this));
     this.app.on('window-all-closed', this.exit.bind(this));
@@ -20,6 +20,7 @@ class Application {
 
     ['next', 'previous', 'stop', 'playPause'].forEach(action => {
       this.shortcuts.on(action, this.onShortcutKeyPress.bind(this, action));
+      this.tray.on(action, this.onShortcutKeyPress.bind(this, action));
     });
   }
 
@@ -31,6 +32,7 @@ class Application {
   onReady() {
     this.window.createWindow();
     this.window.initWindow();
+    this.tray.init();
     this.shortcuts.registerMediaKeys();
   }
 
