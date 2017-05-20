@@ -1,5 +1,7 @@
 {
   "name": "pocketcasts-desktop",
+  "productName": "PocketCasts",
+  "bundle": "org.evoyan.pocketcasts",
   "version": "0.1.0",
   "description": "PocketCasts desktop version (unofficial)",
   "main": "src/index.js",
@@ -24,7 +26,10 @@
     "electron": "^1.6.2"
   },
   "devDependencies": {
+    "del": "^2.2.2",
     "electron-connect": "^0.6.1",
-    "gulp": "^3.9.1"
+    "electron-packager": "^8.7.0",
+    "gulp": "^3.9.1",
+    "gulp-copy": "^1.0.0"
   }
 }

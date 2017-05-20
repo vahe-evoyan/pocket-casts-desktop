@@ -25,7 +25,6 @@ class Application {
   }
 
   onShortcutKeyPress(action) {
-    console.log('MediaControl:', action);
     this.window.send(action);
   }
 
